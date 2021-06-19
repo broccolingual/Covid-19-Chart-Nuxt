@@ -89,6 +89,9 @@ p {
 .main {
   padding: 1em;
 }
+.input-field {
+  background-color: #f1f1e3;
+}
 .input-field form {
   display: flex;
   justify-content: center;
@@ -103,17 +106,25 @@ p {
 }
 .input-field form p {
   margin: 0 0.5em;
+  color: black;
 }
 .input-field form input {
-  background-color: #1b1c4b;
-  border: 1px solid #f1f1e3;
+  border: 1px solid;
   border-radius: 12px;
-  padding: 0.2em;
+  padding: 0.3em;
+  background-color: #f1f1e3;
+}
+.input-field form button {
+  border: 1px solid;
+  border-radius: 12px;
+  padding: 0.3em;
+  background-color: #1b1c4b;
   color: #f1f1e3;
 }
 .graph-container {
   display: flex;
   justify-content: center;
+  margin-top: 1em;
 }
 .graph-container .graph {
   width: 50%;
