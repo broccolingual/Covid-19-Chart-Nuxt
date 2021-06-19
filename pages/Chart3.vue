@@ -20,10 +20,7 @@ export default {
       period: this.getPeriod,
       result: [],
       datetime: [],
-      testedPositive: [],
-      ern: [],
-      sma5: [],
-      sma10: [],
+      tested: [],
     }
   },
   mounted() {
@@ -49,9 +46,7 @@ export default {
     },
     getData() {
       this.getDatetimeLabels()
-      this.getTestedPositive()
-      this.getERN()
-      this.getSMA5()
+      this.getTested()
     },
     getDatetimeLabels() {
       const tmp = []
@@ -60,26 +55,12 @@ export default {
       }
       this.datetime = tmp
     },
-    getTestedPositive() {
+    getTested() {
       const tmp = []
       for (let i = 0; i < this.result.length; i++) {
-        tmp.push(parseInt(this.result[i][8], 10))
+        tmp.push(parseInt(this.result[i][2], 10))
       }
-      this.testedPositive = tmp
-    },
-    getERN() {
-      const tmp = []
-      for (let i = 0; i < this.result.length; i++) {
-        tmp.push(parseFloat(this.result[i][7]))
-      }
-      this.ern = tmp
-    },
-    getSMA5() {
-      const tmp = []
-      for (let i = 0; i < this.result.length; i++) {
-        tmp.push(parseInt(this.result[i][9], 10))
-      }
-      this.sma5 = tmp
+      this.tested = tmp
     },
     drawGraph() {
       this.loadCsv()
@@ -89,30 +70,12 @@ export default {
         labels: this.datetime,
         datasets: [
           {
-            label: 'Tested Positive',
-            data: this.testedPositive,
+            label: 'People Tested',
+            data: this.tested,
             borderColor: 'rgba(227, 102, 169, 0.8)',
             backgroundColor: 'rgba(227, 102, 169, 0.6)',
             fill: true,
             type: 'bar',
-            lineTention: 0.3,
-            yAxisID: 'y-axis-1',
-          },
-          {
-            label: 'Effective Reproduction Number',
-            data: this.ern,
-            borderColor: 'rgba(124, 124, 196, 0.8)',
-            fill: false,
-            type: 'line',
-            lineTention: 0.3,
-            yAxisID: 'y-axis-2',
-          },
-          {
-            label: 'Tested Positive(SMA5)',
-            data: this.sma5,
-            borderColor: '#F1F1E3',
-            fill: false,
-            type: 'line',
             lineTention: 0.3,
             yAxisID: 'y-axis-1',
           },
@@ -160,25 +123,7 @@ export default {
               position: 'left',
               scaleLabel: {
                 display: true,
-                labelString: 'Tested Positive',
-                fontColor: 'rgba(241, 241, 227, 0.8)',
-              },
-              gridLines: {
-                color: 'rgba(241, 241, 227, 0.2)',
-                drawBorder: false,
-                borderDash: [5, 5],
-              },
-              ticks: {
-                fontColor: 'rgba(241, 241, 227, 0.8)',
-              },
-            },
-            {
-              id: 'y-axis-2',
-              type: 'linear',
-              position: 'right',
-              scaleLabel: {
-                display: true,
-                labelString: 'Effective Reproduction Number',
+                labelString: 'People Tested',
                 fontColor: 'rgba(241, 241, 227, 0.8)',
               },
               gridLines: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="main">
     <h1>Covid 19 Analysis</h1>
     <div class="input-field">
       <form @submit.prevent>
@@ -15,17 +15,42 @@
         <button type="submit" @click="click()">Search</button>
       </form>
     </div>
-    <Chart v-if="show" :get-location="location" :get-period="period" />
+    <div class="graph-container">
+      <div class="graph">
+        <h3>Tested Positive</h3>
+        <Chart v-if="show" :get-location="location" :get-period="period" />
+      </div>
+      <div class="graph">
+        <h3>Death(Total)</h3>
+        <Chart2 v-if="show" :get-location="location" :get-period="period" />
+      </div>
+    </div>
+    <div class="graph-container">
+      <div class="graph">
+        <h3>People Tested(Total)</h3>
+        <Chart3 v-if="show" :get-location="location" :get-period="period" />
+      </div>
+      <div class="graph">
+        <h3>Hospitalized</h3>
+        <Chart4 v-if="show" :get-location="location" :get-period="period" />
+      </div>
+    </div>
     <p>Author: broccolingual</p>
   </div>
 </template>
 
 <script>
 import Chart from './Chart'
+import Chart2 from './Chart2'
+import Chart3 from './Chart3'
+import Chart4 from './Chart4'
 
 export default {
   components: {
     Chart,
+    Chart2,
+    Chart3,
+    Chart4,
   },
   data() {
     return {
@@ -56,8 +81,13 @@ export default {
 
 <style>
 h1,
+h2,
+h3,
 p {
   color: #f1f1e3;
+}
+.main {
+  padding: 1em;
 }
 .input-field form {
   display: flex;
@@ -80,5 +110,12 @@ p {
   border-radius: 12px;
   padding: 0.2em;
   color: #f1f1e3;
+}
+.graph-container {
+  display: flex;
+  justify-content: center;
+}
+.graph-container .graph {
+  width: 50%;
 }
 </style>
