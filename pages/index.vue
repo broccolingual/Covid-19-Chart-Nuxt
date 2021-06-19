@@ -126,7 +126,14 @@ p {
   justify-content: center;
   margin-top: 1em;
 }
+.graph-container .graph h3 {
+  text-align: center;
+}
 .graph-container .graph {
   width: 50%;
+  margin: 0.4em;
+  padding: 0.5em;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
 }
 </style>
